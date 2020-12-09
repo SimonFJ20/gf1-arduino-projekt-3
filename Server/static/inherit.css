@@ -4,41 +4,62 @@ body {
     display: block;
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    overflow:hidden;
 }
 .header {
+    height: 25vh; 
+    width: 100vw; 
+    position: absolute;
+    top:0px;
+    right:0px;
+    background-color: rgba(255, 0, 0, 0.5);
+    z-index: 5;
+}
+.header.image {
     background-image: url("backdrop.png");
     background-size: cover;
     height: 25vh; 
     width: 100vw; 
-    position: sticky;
+    position: absolute;
     top:0px;
     right:0px;
-    filter:grayscale(0.5);
-    z-index: 1;
+    filter: grayscale(1);
+    z-index: 0;
 }
-.selector {
+.toolbar {
+    filter: none;
     background-color: rgba(0, 0, 0, 0.5);
     width: 100vw;
     height: 6vh;
-    position:sticky;
+    position:absolute;
     top:0px;
     right:0px;
-    z-index: 2;
-}
-button {
-    border:none;
-    outline: none;
-}
-button.selector {
-    background-color: transparent;
-    font-family:'Courier New', Courier, monospace;
-    color:white;
-    font-size: 3vh;
-    z-index:3;
+    z-index: 10;
     overflow:hidden;
 }
+button {
+    cursor: pointer;
+    border:2px solid black;
+    outline: 2px solid white;
+    height:5vh;
+    width:10vw;
+    background-color:white;
+    font-family: inherit;
+    font-weight: bold;
+}
+button.toolbar {
+    background-color: transparent;
+    font-family: 'Courier New', Courier, monospace;
+    color:white;
+    font-size: 3vh;
+    z-index: 15;
+    position: static;
+    border: none;
+    outline: none;
+    font-weight: 50;
+}
 .footer {
-    position: sticky;
+    position: absolute;
     top: 95vh;
     left: 0px;
     height: 5vh;
