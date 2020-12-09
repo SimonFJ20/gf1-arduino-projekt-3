@@ -1,5 +1,5 @@
 @echo off
-:1
+:loop
 python -m flask run
 pause
-goto 1
+goto loop

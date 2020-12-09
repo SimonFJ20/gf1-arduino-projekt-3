@@ -1,5 +1,5 @@
 import os
-from flask import Flask,redirect,render_template
+from flask import Flask,redirect,render_template,request
 
 app = Flask(__name__)
 
@@ -11,9 +11,13 @@ def index():
 def uploadrequest():
     return render_template('uploadrequest.html')
     
-@app.route('/datahandler')
-def datahandler():
-    return render_template("this is the data handler")
+@app.route('/uploadrequest/datahandler', method=['GET', 'POST'])
+def uploadrequestdatahandler():
+    error = None
+    #if request.method == 'POST':
+        #return redirect('./', code=302)
+        #return render_template('datahandler.html')
+    return render_template('datahandler.html')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 80))

@@ -11,7 +11,7 @@
     <script>
       $(document).on("click", "#button", function() {
         $.ajax({
-          url:window.location.hostname + "/datahandler",
+          url:window.location + "/datahandler",
           method:"POST",
           data: $("#data").val().toString(),
           dataType: "text"
