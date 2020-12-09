@@ -13,12 +13,12 @@
       <div id = "toolbar" class = "toolbar"></div>
     </div>
     <!--backdrop-->
-    <div class = "footer"></div>
-    <div style = "position:absolute; width:100vw; height:60vh;top:30vh; overflow:hidden">
-      <div id = "container" style = "position:absolute; width:100%; height: 100%; top: 0%">
+    <div class = "footer">footer text</div>
+    <div class = "container">
+      <div id = "main-container">
         <br>
         <h1>Upload Request</h1>
-        <input style="width:30vw; height:10vh; border:2px solid black; outline: 2px solid white;" id="data">
+        <input style="width:30vw; height:10vh; border:1px solid black;" id="data">
         </br>
         </br>
         <button id="button" type="button">Submit</button>
@@ -27,37 +27,4 @@
       </div>
     </div>
   </body>
-  <script>
-    window.camper_tween(document.getElementById("container"), "lol", 
-    [
-      {
-          property: "top",
-          start: 100,
-          end: 0,
-          unit: "vh",
-          time: 2,
-      },
-      {
-          property: "width",
-          start: 0,
-          end: 100,
-          unit: "%",
-          time: 2,
-      },
-      {
-          property: "right",
-          start: 50,
-          end: 0,
-          unit: "%",
-          time: 2,
-      },
-      {
-          property: "height",
-          start: 0,
-          end: 100,
-          unit: "%",
-          time: 2,
-      },
-    ])
-  </script>
 </html>

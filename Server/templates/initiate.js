@@ -4,6 +4,7 @@
 window.onload = function() {
     var display = ["index","request"]
     var toolbar = document.getElementById("toolbar")
+    var container = document.getElementById("main-container")
 
     for (var i = 0; i < display.length; i++) {
         var button = document.createElement("button")
@@ -27,4 +28,45 @@ window.onload = function() {
             time: 0.5,
         },
     ])
+
+    window.camper_tween(container, "containerTween", 
+    [
+      {
+          property: "top",
+          start: 100,
+          end: 0,
+          unit: "vh",
+          time: 2,
+      },
+    ])
+
+    //bg slideshow
+    var slideshowImages = ["backdrop.png","backdrop2.png"]
+    var currentImage = 0
+    var headerImage = document.getElementsByClassName("header image")[0]
+    function swap() {
+        if (currentImage < slideshowImages.length - 1) {currentImage++} else {currentImage = 0}
+        window.camper_tween(headerImage, "slideshow", [
+            {
+                property: "opacity",
+                start: 1,
+                end: 0,
+                unit: "",
+                time: .1
+            }
+        ])
+        setTimeout(function (){
+            headerImage.style.backgroundImage = "url('../static/" + slideshowImages[currentImage] + "')"
+            window.camper_tween(headerImage, "slideshow", [
+            {
+                property: "opacity",
+                start: 0,
+                end: 1,
+                unit: "",
+                time: .1
+            }
+        ]
+        )}, 150)
+    }
+    setInterval(swap, 5000)
 }

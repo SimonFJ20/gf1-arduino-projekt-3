@@ -10,10 +10,10 @@ function interpolate(obj, id, settings) {
     animsFromId[id] += 1/60
 
     var property = settings.property || "invalidproperty"
-    var start = settings.start || 0
-    var end = settings.end || 1
-    var unit = settings.unit || ""
-    var time = settings.time || 1
+    var start = settings.start == null && 0 || settings.start
+    var end = settings.end == null && 1 || settings.end
+    var unit = settings.unit == null && "" || settings.unit
+    var time = settings.time == null && 1 || settings.time
     if (animsFromId[id] < time) {
         obj.style[property] = animate(start, end, animsFromId[id]/time) + unit
     }
@@ -22,7 +22,7 @@ function interpolate(obj, id, settings) {
         obj.style[property] = property + unit
         clearInterval(intervalIds[id])
         intervalIds[id] = null
-        animsFromId[id] = null    
+        animsFromId[id] = null
     }
 }
 
