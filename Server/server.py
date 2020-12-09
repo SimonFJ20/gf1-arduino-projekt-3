@@ -11,14 +11,16 @@ def index():
 def uploadrequest():
     return render_template('uploadrequest.html')
     
-@app.route('/uploadrequest/datahandler', method=['GET', 'POST'])
+@app.route('/uploadrequest/datahandler', methods=['POST', 'GET'])
 def uploadrequestdatahandler():
     error = None
-    #if request.method == 'POST':
-        #return redirect('./', code=302)
-        #return render_template('datahandler.html')
+    if request.method == 'POST':
+        return "bruh"
     return render_template('datahandler.html')
+    
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 80))
     app.run(host='0.0.0.0', port=port)
+
+    
