@@ -1,15 +1,15 @@
 body {
-    background-image: url("back.jpg");
+    background-image: url('{{request.base_url[:-4] + url_for('static', filename='assets/back.jpg')}}');
     margin: auto;
     display: block;
     text-align: center;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 .header {
-    background-image: url("backdrop.png");
+    background-image: url('{{request.base_url[:-4] + url_for('static', filename='assets/backdrop.jpg')}}');
     background-size: cover;
-    height: 25vh; 
-    width: 100vw; 
+    height: 25vh;
+    width: 100vw;
     position: sticky;
     top:0px;
     right:0px;
@@ -43,5 +43,5 @@ button.selector {
     left: 0px;
     height: 5vh;
     width: 100vw;
-    background-color: rgb(25,25,25); 
+    background-color: rgb(25,25,25);
  }

@@ -5,7 +5,6 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    url_for('static', filename='inherit.css')
     return render_template('index.html')
 
 @app.route('/uploadrequest')
@@ -18,6 +17,10 @@ def uploadrequestdatahandler():
     if request.method == 'POST':
         return "bruh"
     return render_template('datahandler.html')
+
+@app.route('/css')
+def css():
+    return render_template('css/inherit.css')
 
 
 if __name__ == '__main__':
