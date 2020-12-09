@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <style>
+      body * {
+        margin:auto;
+        display:block;
+        text-align: center;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      $(document).on("click", "#button", function() {
+        $.ajax({
+          url:window.location.hostname + "/datahandler",
+          method:"POST",
+          data: $("#data").val().toString(),
+          dataType: "text"
+        }).done = function(data) {
+          $("#output").html(data);
+        };
+      });
+    </script>
+    <title>skyd mig</title>
+    </head>
+  <body>
+    </br>
+    <h2>simons praktikant 2020</h2>
+    </br>
+    <input id="data">
+    </br>
+    <button id="button" type="button">Submit</button>
+    </br>
+    <p id="output"></p>
+  </body>
+</html>
