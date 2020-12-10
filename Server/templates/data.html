@@ -4,7 +4,8 @@
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/inherit.css')}}">
     <title>Arduino Projekt 3</title>
     <script type="text/javascript" src="{{url_for('static', filename='tween.mjs')}}"></script>
-    <script type="text/javascript" src="{{url_for('.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('initiate.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('data-sort.js')}}"></script>
   </head>
   <body>
     <!--header-->
@@ -19,8 +20,14 @@
     <div class = "footer"><p>pieter og from (c) 2020 - ∞</p></div>
     <!--content-->
     <div class = "container">
-      <div id = "main-container">
-        <p>Velkommen til startside</p>
+        <div id = "main-container">
+            <div style=height:1px></div>
+            <input style="display:block; background-color: RGB(255,255,255); width:25%; height:10%; border-color:transparent; outline:1px solid black; margin:auto;">
+            <div style=height:1px></div>
+            <div style="display:block; background-color: RGB(255,255,255); width:25%; height:70%; outline:1px solid black; margin:auto;">
+            </div>
+            <button style="margin-top: 2%;">button</button>
+        </div>
       </div>
     </div>
   </body>

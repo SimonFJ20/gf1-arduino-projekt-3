@@ -2,7 +2,7 @@
     //code that runs once the webpage has loaded
 
 window.onload = function() {
-    var display = ["index","request"]
+    var display = ["index","request","data"]
     var toolbar = document.getElementById("toolbar")
     var container = document.getElementById("main-container")
 
@@ -10,9 +10,9 @@ window.onload = function() {
         var button = document.createElement("button")
         button.className = "toolbar"
         button.style.width = 100/display.length*0.75+"vw"
-        const temp = display[i]
+        const page = display[i]
         button.onclick = function() {
-            window.location = temp;
+            window.location = page;
         }
         button.innerHTML = display[i].toUpperCase()
         toolbar.appendChild(button)
@@ -43,30 +43,41 @@ window.onload = function() {
     //bg slideshow
     var slideshowImages = ["{{request.base_url[:-3] + url_for('static', filename='backdrop.png')}}", "{{request.base_url[:-3] + url_for('static', filename='backdrop2.png')}}"]
     var currentImage = 0
-    var headerImage = document.getElementsByClassName("header image")[0]
+    var currentHeader = 0
+    var headerImage0 = document.getElementsByClassName("header image 0")[0]
+    var headerImage1 = document.getElementsByClassName("header image 1")[1]
     function swap() {
         if (currentImage < slideshowImages.length - 1) {currentImage++} else {currentImage = 0}
-        window.camper_tween(headerImage, "slideshow", [
+        
+        currentHeader = currentHeader == 1 && 0 || 1
+        if (currentHeader == 1) 
+        {
+            headerImage1.style.backgroundImage = 'url(' + slideshowImages[currentImage] + ')';
+        }
+        else {
+            headerImage0.style.backgroundImage = 'url(' + slideshowImages[currentImage] + ')';
+        }
+        window.camper_tween(headerImage0, "slideshow", 
+        [
             {
                 property: "opacity",
-                start: 1,
-                end: 0,
+                start: currentHeader == 1 && 0 || 1,
+                end: currentHeader == 0 && 1 || 0,
                 unit: "",
                 time: .1
             }
         ])
-        setTimeout(function (){
-            headerImage.style.backgroundImage = 'url(' + slideshowImages[currentImage] + ')';
-            window.camper_tween(headerImage, "slideshow", [
+        window.camper_tween(headerImage1, "slideshow", 
+        [
             {
                 property: "opacity",
-                start: 0,
-                end: 1,
+                start: currentHeader == 0 && 1 || 0,
+                end: currentHeader == 1 && 0 || 1,
                 unit: "",
                 time: .1
             }
         ]
-        )}, 150)
+        )
     }
     setInterval(swap, 20000)
 }

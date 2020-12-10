@@ -11,6 +11,10 @@ def index():
 @app.route('/request')
 def request():
     return render_template('request.html')
+    
+@app.route('/data')
+def data():
+    return render_template('data.html')
 
 @app.route('/uploadrequest/datahandler', methods=['POST', 'GET'])
 def uploadrequestdatahandler():
