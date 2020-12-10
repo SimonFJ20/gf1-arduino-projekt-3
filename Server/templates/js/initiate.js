@@ -1,7 +1,8 @@
 //kode der kører når webpagen først er loadet
     //code that runs once the webpage has loaded
 
-window.onload = function() {
+window.onload = function() 
+{
     var display = ["index","request","data"]
     var toolbar = document.getElementById("toolbar")
     var container = document.getElementById("main-container")
