@@ -23,10 +23,13 @@ def uploadrequestdatahandler():
         return "bruh"
     return render_template('datahandler.html')
 
-@app.route('/js')
-def js():
+@app.route('/initiate')
+def initiate():
     return render_template('js/initiate.js')
 
+@app.route('/datasort')
+def datasort():
+    return render_template('js/data-sort.js')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 80))

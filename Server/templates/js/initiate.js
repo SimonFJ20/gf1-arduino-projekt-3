@@ -1,7 +1,7 @@
 //kode der kører når webpagen først er loadet
     //code that runs once the webpage has loaded
 
-window.onload = function() 
+window.addEventListener("load", function() 
 {
     var display = ["index","request","data"]
     var toolbar = document.getElementById("toolbar")
@@ -81,4 +81,4 @@ window.onload = function()
         )
     }
     setInterval(swap, 20000)
-}
+})

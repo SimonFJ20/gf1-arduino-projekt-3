@@ -4,8 +4,8 @@ Dictionary setup/example:
     sort(dict, "two")
 */
 var dict = {"test":["one","two"],"yeet":["three","four"]}
-function sort(data, input) {
-    input = input.replace(/-@/g,"")
+//just for testing ^^^^^^^^^^
+function sort(data, input, type) {
     var collection = []
     for (var a = 0; a < Object.keys(data).length; a++) {
         var user = Object.keys(data)[a]
@@ -14,17 +14,41 @@ function sort(data, input) {
         }
     }
     if (input) {
-        collection.sort(function (x, y)
+        if (type) 
         {
-            xIndex = String(x.match(/(.+)?-@/)).match(input) == null ? 
-                256 : String(x.match(/(.+)?-@/)).match(input).index
-            yIndex = String(y.match(/(.+)?-@/)).match(input) == null ? 
-                256 : String(y.match(/(.+)?-@/)).match(input).index
-            return xIndex < yIndex ? -1 : 1
-        })
-        for (var i = 0; i < collection.length; i++) {
-            if (String(collection[i].match(/(.+)?-@/)).match(input) == null) {
-                collection.splice(i)
+            if (type == "user") {
+                input = input.slice(5)
+                collection.sort(function (x, y)
+                {
+                    xIndex = String(x.match(/-@(.+)/)).match(input) == null ? 
+                        256 : String(x.match(/-@(.+)/)).match(input).index
+                    yIndex = String(y.match(/-@(.+)/)).match(input) == null ? 
+                        256 : String(y.match(/-@(.+)/)).match(input).index
+                    return xIndex < yIndex ? -1 : 1
+                })
+                for (var i = 0; i < collection.length; i++) {
+                    if (String(collection[i].match(/-@(.+)/)).match(input) == null) {
+                        collection.splice(i)
+                    }
+                }
+            }
+        } 
+        else 
+        {
+            input = input.replace(/[-@:]/g,"")
+
+            collection.sort(function (x, y)
+            {
+                xIndex = String(x.match(/(.+)?-@/)).match(input) == null ? 
+                    256 : String(x.match(/(.+)?-@/)).match(input).index
+                yIndex = String(y.match(/(.+)?-@/)).match(input) == null ? 
+                    256 : String(y.match(/(.+)?-@/)).match(input).index
+                return xIndex < yIndex ? -1 : 1
+            })
+            for (var i = 0; i < collection.length; i++) {
+                if (String(collection[i].match(/(.+)?-@/)).match(input) == null) {
+                    collection.splice(i)
+                }
             }
         }
     }
@@ -32,9 +56,7 @@ function sort(data, input) {
     return collection
 }
 
-function createObject(text)
-
-window.onload = function()
+window.addEventListener("load", function() 
 {
     var searchbox = document.getElementById("search")
     var list = document.getElementById("list")
@@ -45,7 +67,14 @@ window.onload = function()
         var filter = searchbox.value;
         var textArray;
         if (filter != "") {
-            textArray = sort(dict, filter)
+            if (filter.slice(0, 5) == "user:") 
+            {
+                textArray = sort(dict, filter, "user")
+            } 
+            else 
+            {
+                textArray = sort(dict, filter)
+            }
         } 
         else 
         {
@@ -55,11 +84,12 @@ window.onload = function()
         {
             for (var i = 0; i < textArray.length; i++) 
             {
-                var obj = document.createObject("li")
-                obj.innerHTML = textArray
+                var obj = document.createElement("dt")
+                obj.innerHTML = textArray[i]
                 obj.style = "font-family: inherit;"
-                obj.parent = list
+                list.appendChild(obj)
             }
         }
     }
-}
+    searchbox.onchange()
+})

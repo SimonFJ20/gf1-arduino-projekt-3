@@ -2,10 +2,11 @@
 <html>
   <head>
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/inherit.css')}}">
-    <title>Arduino Projekt 3</title>
     <script type="text/javascript" src="{{url_for('static', filename='tween.mjs')}}"></script>
-    <script type="text/javascript" src="{{url_for('initiate.js')}}"></script>
-    <script type="text/javascript" src="{{url_for('data-sort.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('.initiate')}}"></script>
+    <script type="text/javascript" src="{{url_for('.datasort')}}"></script>
+
+    <title>Data Storage</title>
   </head>
   <body>
     <!--header-->
@@ -13,21 +14,18 @@
     <div class = "header image 1"></div>
     <div class = "header color" style="z-index: -1; background-color:white"></div> <!--background color-->
     <div class = "header">
-      <div id = "toolbar" class = "toolbar">
-      </div>
+      <div id = "toolbar" class = "toolbar"></div>
     </div>
     <!--footer-->
     <div class = "footer"><p>pieter og from (c) 2020 - ∞</p></div>
     <!--content-->
     <div class = "container">
-        <div id = "main-container">
-            <div style=height:1px></div>
-            <input id = "search" style = "display:block; background-color: RGB(255,255,255); width:25%; height:10%; border-color:transparent; outline:1px solid black; margin:auto;">
-            <div style=height:1px></div>
-            <div id = "list" style = "display:block; background-color: RGB(255,255,255); width:25%; height:70%; outline:1px solid black; margin:auto;">
-            </div>
-            <button style="margin-top: 2%;">button</button>
-        </div>
+      <div id = "main-container">
+          <div style=height:1px></div>
+          <input autocomplete = "off" id = "search" style = "font-size:2vh; font-family:inherit; display:block; background-color: RGB(255,255,255); width:25%; height:10%; border-color:transparent; outline:1px solid black; margin:auto;">
+          <div style=height:1px></div>
+          <div id = "list" style = "display:block; background-color: RGB(255,255,255); width:25%; height:70%; outline:1px solid black; margin:auto;"></div>
+          <button style="margin-top: 2%;">button</button>
       </div>
     </div>
   </body>
