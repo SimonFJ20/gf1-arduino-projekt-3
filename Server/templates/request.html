@@ -1,14 +1,17 @@
+<!DOCTYPE html>
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/inherit.css')}}">
     <script type="text/javascript" src="{{url_for('static', filename='tween.mjs')}}"></script>
-    <script type="text/javascript" src="{{url_for('.js')}}"></script>
+    <script type="text/javascript" src="{{url_for('.initiate')}}"></script>
     <title>Request Upload Task</title>
-    </head>
+  </head>
   <body>
     <!--header-->
-    <div class = "header image"></div>
+    <div class = "header image 0"></div>
+    <div class = "header image 1"></div>
+    <div class = "header color" style="z-index: -1; background-color:white"></div> <!--background color-->
     <div class = "header">
       <div id = "toolbar" class = "toolbar"></div>
     </div>

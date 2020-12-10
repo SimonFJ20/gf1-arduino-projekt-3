@@ -11,6 +11,10 @@ def index():
 @app.route('/request')
 def request():
     return render_template('request.html')
+    
+@app.route('/data')
+def data():
+    return render_template('data.html')
 
 @app.route('/uploadrequest/datahandler', methods=['POST', 'GET'])
 def uploadrequestdatahandler():
@@ -19,10 +23,13 @@ def uploadrequestdatahandler():
         return "bruh"
     return render_template('datahandler.html')
 
-@app.route('/js')
-def js():
+@app.route('/initiate')
+def initiate():
     return render_template('js/initiate.js')
 
+@app.route('/datasort')
+def datasort():
+    return render_template('js/data-sort.js')
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 80))
