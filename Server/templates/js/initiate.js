@@ -12,7 +12,7 @@ window.onload = function() {
         button.style.width = 100/display.length*0.75+"vw"
         const temp = display[i]
         button.onclick = function() {
-            window.location = temp + ".html"
+            window.location = temp;
         }
         button.innerHTML = display[i].toUpperCase()
         toolbar.appendChild(button)
