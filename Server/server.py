@@ -7,9 +7,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
-@app.route('/uploadrequest')
-def uploadrequest():
-    return render_template('uploadrequest.html')
+@app.route('/request')
+def request():
+    return render_template('request.html')
 
 @app.route('/uploadrequest/datahandler', methods=['POST', 'GET'])
 def uploadrequestdatahandler():
@@ -18,9 +18,9 @@ def uploadrequestdatahandler():
         return "bruh"
     return render_template('datahandler.html')
 
-@app.route('/css')
-def css():
-    return render_template('css/inherit.css')
+@app.route('/js')
+def js():
+    return render_template('js/initiate.js')
 
 
 if __name__ == '__main__':

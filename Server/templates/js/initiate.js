@@ -18,7 +18,7 @@ window.onload = function() {
         toolbar.appendChild(button)
     }
     toolbar.style.height = 0
-    window.camper_tween(toolbar, "toolbarLoad", 
+    window.camper_tween(toolbar, "toolbarLoad",
     [
         {
             property: "height",
@@ -29,7 +29,7 @@ window.onload = function() {
         },
     ])
 
-    window.camper_tween(container, "containerTween", 
+    window.camper_tween(container, "containerTween",
     [
       {
           property: "top",
@@ -41,7 +41,7 @@ window.onload = function() {
     ])
 
     //bg slideshow
-    var slideshowImages = ["backdrop.png","backdrop2.png"]
+    var slideshowImages = ["{{request.base_url[:-3] + url_for('static', filename='backdrop.png')}}", "{{request.base_url[:-3] + url_for('static', filename='backdrop2.png')}}"]
     var currentImage = 0
     var headerImage = document.getElementsByClassName("header image")[0]
     function swap() {
@@ -56,7 +56,7 @@ window.onload = function() {
             }
         ])
         setTimeout(function (){
-            headerImage.style.backgroundImage = "url('../static/" + slideshowImages[currentImage] + "')"
+            headerImage.style.backgroundImage = 'url(' + slideshowImages[currentImage] + ')';
             window.camper_tween(headerImage, "slideshow", [
             {
                 property: "opacity",
@@ -68,5 +68,5 @@ window.onload = function() {
         ]
         )}, 150)
     }
-    setInterval(swap, 5000)
+    setInterval(swap, 20000)
 }
