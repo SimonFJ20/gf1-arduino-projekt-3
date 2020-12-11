@@ -1,18 +1,26 @@
 //kode der kører når webpagen først er loadet
     //code that runs once the webpage has loaded
 
-window.addEventListener("load", function() 
-{
-    var display = ["index","request","data"]
+window.addEventListener("load", function() {
+    var display = ["index", "request" , "data"]
     var toolbar = document.getElementById("toolbar")
     var container = document.getElementById("main-container")
 
     for (var i = 0; i < display.length; i++) {
         var button = document.createElement("button")
         button.className = "toolbar"
-        button.style.width = 100/display.length*0.75+"vw"
+        button.style.width = 100/display.length+"vw"
+        button.style.left = i * (100/display.length) + "vw"
+
+        if (i > ((display.length - 1)/2 + 0.5)) {
+            button.style.paddingRight = 100/display.length/2/1.25 + "vw"
+        } else if (i < ((display.length - 1)/2 - 0.5)) {
+            button.style.paddingLeft = 100/display.length/2/1.25 + "vw"
+        }
+
         const page = display[i]
         button.onclick = function() {
+        
             window.location = page;
         }
         button.innerHTML = display[i].toUpperCase()
@@ -24,7 +32,7 @@ window.addEventListener("load", function()
         {
             property: "height",
             start: 0,
-            end: 6,
+            end: 3,
             unit: "vh",
             time: 0.5,
         },
@@ -51,12 +59,11 @@ window.addEventListener("load", function()
         if (currentImage < slideshowImages.length - 1) {currentImage++} else {currentImage = 0}
         
         currentHeader = currentHeader == 1 && 0 || 1
-        if (currentHeader == 1) 
-        {
-            headerImage1.style.backgroundImage = 'url(' + slideshowImages[currentImage] + ')';
+        if (currentHeader == 1) {
+            headerImage1.style.backgroundImage = 'url(' + slideshowImages[currentImage] + ')'
         }
         else {
-            headerImage0.style.backgroundImage = 'url(' + slideshowImages[currentImage] + ')';
+            headerImage0.style.backgroundImage = 'url(' + slideshowImages[currentImage] + ')'
         }
         window.camper_tween(headerImage0, "slideshow", 
         [
