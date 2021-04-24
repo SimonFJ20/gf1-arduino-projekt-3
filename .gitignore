@@ -2,6 +2,6 @@ node_modules/
 .env
 dist/
 ssl/
-build/
-cpp-lua/lua-5.4.3/
+lua/lua54.dll
+lua/lua54.exe
 package-lock.json
