@@ -2,4 +2,5 @@ node_modules/
 .env
 dist/
 ssl/
-lua/
+lua/lua54.dll
+lua/lua54.exe
