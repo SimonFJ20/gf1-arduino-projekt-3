@@ -1,0 +1,1 @@
+assert(load(arg[1]))()
