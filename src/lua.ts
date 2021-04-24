@@ -1,14 +1,32 @@
-import { spawn, exec, execFile, fork } from 'child_process';
+import { execFile } from 'child_process';
+import path from 'path';
+
+const lua54Executable = path.join(__dirname, '../lua/lua54.exe');
+const luaConfigScript = path.join(__dirname, '../lua/config.lua');
+
+export const executeLua = async (code: string) => {
+
+    execFile(lua54Executable, [luaConfigScript, code], (error, data) => {
+        if(error) {
+            console.error(error)
+        } else {
+            console.log(data.toString());
+        }
+        
+        
+    });
 
 
+}
 
+executeLua(`
+local ap = require('ap3lib')
 
-exec('"../lua/lua54.exe"', (error, stdout, stderr) => {
-    if(error) {
-        console.log('Error:', error.message);
-    }
-    if(stderr) {
-        console.log('Stderr:', stderr);
-    }
-    console.log('Stdout:', stdout);
-});
+print("Start");
+
+ap.display:setText("brijh");
+ap.display:clear();
+
+ap.led:setOutput(0, 1);
+
+`);
