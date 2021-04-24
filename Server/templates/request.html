@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link type="text/css" rel="stylesheet" href="{{url_for('static', filename='css/inherit.css')}}">
+    <script type="text/javascript" src="{{url_for('static', filename='tween.mjs')}}"></script>
+    <script type="text/javascript" src="{{url_for('.initiate')}}"></script>
+    <title>Request Upload Task</title>
+  </head>
+  <body>
+    <!--header-->
+    <div class = "header image 0"></div>
+    <div class = "header image 1"></div>
+    <div class = "header color" style="z-index: -1; background-color:white"></div> <!--background color-->
+    <div class = "header">
+      <div id = "toolbar" class = "toolbar"></div>
+    </div>
+    <!--backdrop-->
+    <div class = "footer"><p>pieter og from (c) 2020 - ∞</p></div>
+    <div class = "container">
+      <div id = "main-container">
+        <br>
+        <h1>Upload Request</h1>
+        <input style="width:30vw; height:10vh; border:1px solid black;" id="data">
+        </br>
+        </br>
+        <button id="button" type="button">Submit</button>
+        </br>
+        <p id="output"></p>
+      </div>
+    </div>
+  </body>
+</html>
