@@ -1,4 +1,4 @@
-import { execFile } from 'child_process';
+import { execFile, ExecFileException } from 'child_process';
 import path from 'path';
 
 const lua54Executable = path.join(__dirname, '../lua/lua54.exe');
@@ -21,27 +21,32 @@ const checkOutput = (data: string) => {
 
 export const executeLua = async (code: string) => {
 
-    execFile(lua54Executable, [luaConfigScript, code], (error: any, data: any) => { // (!!!) requires data types, i think/suggest error: Error, data: Buffer | String
+    execFile(lua54Executable, [luaConfigScript, code], (error: ExecFileException | null, stdout: string, stderr: string) => { // (!!!) requires data types, i think/suggest error: Error, data: Buffer | String
         if(error) {
-            console.error(error)
+            //console.error(error.message.replace(code, '').replace(lua54Executable, '').replace(luaConfigScript, ''));
+            console.error(error.message) //.replace(code, '').replace(/[\S]*\\[\s\S]*\\(\S*)/, '$1'));
+        } else if(stderr) {
+            console.log(stderr.toString());
         } else {
-            console.log(data.toString());
+            console.log(stdout.toString());
         }
         
         
+        
+
     });
 
 
 }
 
 executeLua(`
-local ap = require('ap3lib')
-
 print("Start");
 
-ap.display:setText("brijh");
-ap.display:clear();
+ap3lib.display:setText("brijh");
+ap3lib.display:clear();
 
-ap.led:setOutput(0, 1);
+ap3lib.led:setOutput(0, 1);
+
+io.write('dfgoikjdf')
 
 `);
